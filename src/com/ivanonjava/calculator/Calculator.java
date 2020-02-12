@@ -15,31 +15,12 @@ public class Calculator {
         if (value2.isRoman()) {
             if (result == 0) {
                 return "zero";
-            } else{
+            } else {
                 return subzero + ConverterNumber.arabicToRoman(Math.abs(result));
             }
         } else {
             return "" + subzero + Math.abs(result);
         }
-    }
-
-    private int calculateTask() throws Exception {
-        switch (action) {
-            case "\\*":
-                return value1.getValue() * value2.getValue();
-            case "/":
-                if (value2.getValue() == 0) {
-                    throw new ArithmeticException();
-                }
-                return value1.getValue() / value2.getValue();
-            case "\\+":
-                return value1.getValue() + value2.getValue();
-            case "-":
-                return value1.getValue() - value2.getValue();
-            default:
-                break;
-        }
-        throw new Exception(value1.getValue() + " " + action + " " + value2.getValue());
     }
 
     private void preparingCalculator(String task) throws Exception {
@@ -62,6 +43,24 @@ public class Calculator {
 
     }
 
+    private int calculateTask() throws Exception {
+        switch (action) {
+            case "\\*":
+                return value1.getValue() * value2.getValue();
+            case "/":
+                if (value2.getValue() == 0) {
+                    throw new ArithmeticException();
+                }
+                return value1.getValue() / value2.getValue();
+            case "\\+":
+                return value1.getValue() + value2.getValue();
+            case "-":
+                return value1.getValue() - value2.getValue();
+            default:
+                break;
+        }
+        throw new Exception(value1.getValue() + " " + action + " " + value2.getValue());
+    }
 
     private String findAction(String task) throws Exception {
         for (char a : task.toCharArray()) {
