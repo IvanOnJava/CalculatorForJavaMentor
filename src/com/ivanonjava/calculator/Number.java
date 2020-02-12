@@ -11,7 +11,7 @@ public class Number {
             this.value = ConverterNumber.romanToArabic(value);
             isRoman = true;
         }
-        if (this.value > 10) {
+        if (this.value > 10 || this.value <= 0) {
             throw new IllegalArgumentException(value + " is not in range (0,10]");
         }
     }
